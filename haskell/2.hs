@@ -10,7 +10,7 @@ main :: IO ()
 main = print solveEuler2
 
 solveEuler2 :: Int
-solveEuler2 = last (takeWhile (<4000000) (scanl (+) 0 evenFibs))
+solveEuler2 = last (takeWhile (<5000000) (scanl (+) 0 evenFibs))
 
 evenFibs = filter even fibSeq 
 

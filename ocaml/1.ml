@@ -7,7 +7,9 @@
 
 (* Functional Style *)
 (********************)
-let rec range l u = 
+(* val range : int -> int -> int list *)
+(* let rec range (l: int) (u: int) : int = *)
+let rec range : int -> int -> int list  = fun l u ->
     match (l, u) with
         | _ when l > u -> invalid_arg "Boom!" 
         | _ when l = u -> [u] 
@@ -34,6 +36,7 @@ let solveEuler1Debug x = let seq = range 1 (x-1) in
                     else i in
                 List.fold_left filter 0 seq;;
 
+(* let solveEuler1 : int -> int = fun x -> let seq = range 1 (x-1) in *)
 let solveEuler1 x = let seq = range 1 (x-1) in
                 let filter i j = 
                     if j mod 3 = 0 || j mod 5 = 0 then 
@@ -50,7 +53,7 @@ let solveEuler1 x = let seq = range 1 (x-1) in
 
 (* Option 1 *)
 (* *)
-let solveEuler1 x = 
+let solveEuler1 : int -> int = fun x ->
     let accum = ref 0 in
 
     for i = 1 to 999 do 

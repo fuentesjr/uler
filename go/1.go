@@ -1,38 +1,33 @@
+/*******************************************************************************
+    File: 1.go
+    Date: 03/05/2010
+    Name: Salvador Fuentes Jr.
+    Info: Euler Project Problem/Exercise #1 in Google's Go
+*******************************************************************************/
+
 package main 
 
 import "fmt"
-import "container/vector"
 
-func fibonacci(n int) int {
-    var fib func(int) int
-    //fibCache := [...]int{1, 2}
-    fibCache := new(vector.IntVector) 
-    fibCache.Push(1)
-    fibCache.Push(2)
-
+func solveEuler1(n int) int {
     if n < 0 {
         return -1
     }
 
-    fib = func(x int) int {
-        if x < 2 {
-            return fibCache.At(x)
+    natNum := 1
+    accuSum := 0 
+    for natNum < n {
+        if (natNum % 3) == 0 || (natNum % 5) == 0 {
+            accuSum += natNum 
         }
-
-        if fibCache.Len() > x {
-            return fibCache.At(x) 
-        }
-
-        fibCache.Push(fibCache.At(x-1) + fibCache.At(x-2))
-        return fibCache.At(x)
-    };
-
-    return fib(n)
+        natNum += 1 
+    }
+    return accuSum 
 }
 
 
 func main() {
-  data := fibonacci(5)
-  fmt.Print("Fib(5) =%d", data)
+    data := solveEuler1(1000) // Answer: 233168
+    fmt.Printf("solveEuler1(1000)=%d\n", data)
 }
 
